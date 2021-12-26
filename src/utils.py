@@ -4,6 +4,7 @@ import pandas as pd
 import cv2 as cv
 import numpy as np
 import torch
+from PIL import Image
 from torchvision import transforms, utils, models
 from sklearn.cluster import DBSCAN
 from matplotlib import cm
