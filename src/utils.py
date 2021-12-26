@@ -89,7 +89,8 @@ def find_bounding_boxes_per_class(CAM_explainer, img_path, class_names, class_la
         ax = fig.gca()
 
     class_boxes = {}
-    [class_boxes[class_oi] = [] for class_oi in list(strToLabel.keys())]
+    for class_oi in list(strToLabel.keys()):
+        class_boxes[class_oi] = []
     for class_oi in list(strToLabel.keys()):
         img = cv.imread(img_path)
         data_transform = transforms.Compose([
