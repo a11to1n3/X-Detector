@@ -133,7 +133,7 @@ def find_bounding_boxes_per_class(CAM_explainer, img_path, class_names, class_la
         ymaxs = [max(np.array(X)[clustering.labels_ == l,1]) for l in np.unique(clustering.labels_) if l != -1]
 
         [class_boxes[class_oi].append([xmins[i], ymins[i], xmaxs[i], ymaxs[i]]) for i in range(len(xmins))]
-        [class_scores[class_oi].append(np.mean(overlay[class_boxes[class_oi][0]:class_boxes[class_oi][2],class_boxes[class_oi][1]:class_boxes[class_oi][3]])) for i in range(len(xmins))]
+        [class_scores[class_oi].append(np.mean(overlay[class_boxes[class_oi][i][0]:class_boxes[class_oi][i][2],class_boxes[class_oi][i][1]:class_boxes[class_oi][i][3]])) for i in range(len(xmins))]
 
         if plot:
             overlay = overlay * (overlay > 0.5).astype(np.uint8)
