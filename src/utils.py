@@ -89,8 +89,10 @@ def find_bounding_boxes_per_class(CAM_explainer, img_path, class_names, class_la
         ax = fig.gca()
 
     class_boxes = {}
+    class_scores = {}
     for class_oi in list(strToLabel.keys()):
         class_boxes[class_oi] = []
+        class_scores[class_oi] = []
     for class_oi in list(strToLabel.keys()):
         img = cv.imread(img_path)
         data_transform = transforms.Compose([
@@ -129,6 +131,7 @@ def find_bounding_boxes_per_class(CAM_explainer, img_path, class_names, class_la
         ymaxs = [max(np.array(X)[clustering.labels_ == l,1]) for l in np.unique(clustering.labels_) if l != -1]
 
         [class_boxes[class_oi].append([xmins[i], ymins[i], xmaxs[i], ymaxs[i]]) for i in range(len(xmins))]
+        [class_scores[class_oi].append(np.mean(overlay[class_boxes[class_oi][0]:class_boxes[class_oi][2],class_boxes[class_oi][1]:class_boxes[class_oi][3]])) for i in range(len(xmins))]
 
         if plot:
             overlay = overlay * (overlay > 0.5).astype(np.uint8)
@@ -140,13 +143,13 @@ def find_bounding_boxes_per_class(CAM_explainer, img_path, class_names, class_la
             draw = ImageDraw.Draw(overlayed_img)
             [draw.rectangle(((xmins[i], ymins[i]), (xmaxs[i], ymaxs[i])),outline=strToColor[class_oi]) for i in range(len(xmins))]
             if np.all(np.array(ymins)-10 > 10):
-              [draw.text(((xmins[i], ymins[i]-10)),class_oi, fill=strToColor[class_oi]) for i in range(len(xmins))]
+                [draw.text(((xmins[i], ymins[i]-10)),class_oi, fill=strToColor[class_oi]) for i in range(len(xmins))]
             else:
-              [draw.text(((xmins[i], ymaxs[i]+10)),class_oi, fill=strToColor[class_oi]) for i in range(len(xmins))]
+                [draw.text(((xmins[i], ymaxs[i]+10)),class_oi, fill=strToColor[class_oi]) for i in range(len(xmins))]
             
             ax.imshow(np.array(overlayed_img))
     
     if plot:
         plt.show()
 
-    return class_boxes
+    return class_boxes, class_scores
