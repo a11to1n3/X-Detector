@@ -6,6 +6,7 @@ import numpy as np
 import torch
 from torchvision import transforms, utils, models
 from sklearn.cluster import DBSCAN
+from matplotlib import cm
 import matplotlib.pyplot as plt
 
 # Erase classes except one class
