@@ -3,6 +3,7 @@ import copy
 import pandas as pd
 import numpy as np
 from sklearn.cluster import DBSCAN
+import matplotlib.pyplot as plt
 
 # Erase classes except one class
 def eraseWithROI(image, start_point, end_point):
