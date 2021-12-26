@@ -117,6 +117,8 @@ def find_bounding_boxes_per_class(CAM_explainer, img_path, class_names, class_la
             for j in range(overlay1.shape[0]):
                 if overlay1.T[i,j] == 1:
                     X.append([i,j])
+
+        X = np.array(X)
         if len(X.shape) > 1:
             clustering = DBSCAN(eps=3, min_samples=2).fit(X)
         else:
