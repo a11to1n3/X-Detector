@@ -96,7 +96,7 @@ def find_bounding_boxes_per_class(CAM_explainer, img_path, class_names, class_la
                                     std=[0.229, 0.224, 0.225])
             ])
         img_norm = data_transform(img)
-        ex, out = a(torch.tensor(img_norm.reshape(1,3,224,224),dtype=torch.float),False,strToLabel[class_oi])
+        ex, out = CAM_explainer(torch.tensor(img_norm.reshape(1,3,224,224),dtype=torch.float),False,strToLabel[class_oi])
         
         cmap = cm.get_cmap('jet')
         ex = Image.fromarray(ex)
