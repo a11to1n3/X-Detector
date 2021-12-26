@@ -115,7 +115,13 @@ def find_bounding_boxes_per_class(CAM_explainer, img_path, class_names, class_la
             for j in range(overlay1.shape[0]):
                 if overlay1.T[i,j] == 1:
                     X.append([i,j])
-        clustering = DBSCAN(eps=3, min_samples=2).fit(X)
+        if len(X.shape) > 1:
+            clustering = DBSCAN(eps=3, min_samples=2).fit(X)
+        else:
+            if len(X) == 1:
+                clustering = DBSCAN(eps=3, min_samples=2).fit(X.reshape(1, -1))
+            else:
+                clustering = DBSCAN(eps=3, min_samples=2).fit(X.reshape(-1, 1))
 
         xmins = [min(np.array(X)[clustering.labels_ == l,0]) for l in np.unique(clustering.labels_) if l != -1]
         xmaxs = [max(np.array(X)[clustering.labels_ == l,0]) for l in np.unique(clustering.labels_) if l != -1]
