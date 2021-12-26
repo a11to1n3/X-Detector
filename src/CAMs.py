@@ -201,7 +201,6 @@ class ModelOutputs:
         target_activations = []
         for name, module in self.model._modules.items():
             if module == self.feature_module:
-                print(name)
                 if zero_out:
                     target_activations, x = self.feature_extractor(x, zero_out)
                 else:
