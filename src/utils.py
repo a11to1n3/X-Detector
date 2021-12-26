@@ -74,7 +74,7 @@ def multiplyAndWrite(image, instance, knowledge_base, times, class_of_interest, 
   
   return image, knowledge_base, count
 
-def find_bounding_boxes_per_class(CAM_explainer, img_path, class_names, class_labels, class_colors, plot=False)
+def find_bounding_boxes_per_class(CAM_explainer, img_path, class_names, class_labels, class_colors, plot=False):
     strToLabel = {n:l for n,l in zip(class_names, class_labels)}
     strToColor = {n:c for n,c in zip(class_names, class_colors)}
 
