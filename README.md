@@ -70,7 +70,7 @@ This project uses the Spore Dataset under the scope of the project requirement. 
 ## Test performance over all classes
 
 | Methods  | mAP@0.05 | mAP@0.15 | mAP@0.25
-| ------------- | ------------- |
+| ------------- | ------------- | ------------- | ------------- |
 | XGrad-CAM on ResNet50  | 0.00025 | 0 | 0 |
 | XGrad-CAM on VGG16  | 0.01 | 0.002 | 0.00053 |
 | XGrad-CAM on DenseNet169  | 0.00018 | 0.000013 | 0.000013 |
