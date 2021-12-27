@@ -111,7 +111,7 @@ def find_bounding_boxes_per_class(CAM_explainer, img_path, class_names, class_la
         overlay = ex.resize(img.size, resample=Image.BILINEAR)
         overlay = np.asarray(overlay)
 
-        overlay1 = overlay>0.8
+        overlay1 = overlay>0.6
         X = []
         for i in range(overlay1.shape[1]):
             for j in range(overlay1.shape[0]):
