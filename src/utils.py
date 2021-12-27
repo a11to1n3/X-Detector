@@ -121,16 +121,20 @@ def find_bounding_boxes_per_class(CAM_explainer, img_path, class_names, class_la
         X = np.array(X)
         if len(X.shape) > 1:
             clustering = DBSCAN(eps=3, min_samples=2).fit(X)
+	    xmins = [min(np.array(X)[clustering.labels_ == l,0]) for l in np.unique(clustering.labels_) if l != -1]
+            xmaxs = [max(np.array(X)[clustering.labels_ == l,0]) for l in np.unique(clustering.labels_) if l != -1]
+            ymins = [min(np.array(X)[clustering.labels_ == l,1]) for l in np.unique(clustering.labels_) if l != -1]
+            ymaxs = [max(np.array(X)[clustering.labels_ == l,1]) for l in np.unique(clustering.labels_) if l != -1]
         else:
             if len(X) == 1:
                 clustering = DBSCAN(eps=3, min_samples=2).fit(X.reshape(1, -1))
+                xmins = [min(np.array(X)[clustering.labels_ == l,0]) for l in np.unique(clustering.labels_) if l != -1]
+                xmaxs = [max(np.array(X)[clustering.labels_ == l,0]) for l in np.unique(clustering.labels_) if l != -1]
+                ymins = [min(np.array(X)[clustering.labels_ == l,1]) for l in np.unique(clustering.labels_) if l != -1]
+                ymaxs = [max(np.array(X)[clustering.labels_ == l,1]) for l in np.unique(clustering.labels_) if l != -1]
             else:
-                clustering = DBSCAN(eps=3, min_samples=2).fit(X.reshape(-1, 1))
-
-        xmins = [min(np.array(X)[clustering.labels_ == l,0]) for l in np.unique(clustering.labels_) if l != -1]
-        xmaxs = [max(np.array(X)[clustering.labels_ == l,0]) for l in np.unique(clustering.labels_) if l != -1]
-        ymins = [min(np.array(X)[clustering.labels_ == l,1]) for l in np.unique(clustering.labels_) if l != -1]
-        ymaxs = [max(np.array(X)[clustering.labels_ == l,1]) for l in np.unique(clustering.labels_) if l != -1]
+                xmins, ymins, xmaxs, ymaxs = [0], [0], [0], [0]
+                
 
         [class_boxes[class_oi].append([xmins[i], ymins[i], xmaxs[i], ymaxs[i]]) for i in range(len(xmins))]
         [class_scores[class_oi].append(np.mean(overlay[class_boxes[class_oi][i][0]:class_boxes[class_oi][i][2],class_boxes[class_oi][i][1]:class_boxes[class_oi][i][3]])) for i in range(len(xmins))]
