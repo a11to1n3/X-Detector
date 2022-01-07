@@ -104,7 +104,7 @@ This project uses the Spore Dataset under the scope of the project requirement. 
 | Grad-CAM++ on DenseNet169  | 0.0002 | 0.00002 | 0| 0 |
 | Grad-CAM++ on MobileNetv2  | 0.0002 | 0.000004| 0 | 0 |
 ### Fine-tuning the last two convolutional layers and dense layers
-| Methods  | mAP@0.05 | mAP@0.15 | mAP@0.25 | | mAP@0.5 |
+| Methods  | mAP@0.05 | mAP@0.15 | mAP@0.25 | mAP@0.5 |
 | ------------- | ------------- | ------------- | ------------- | ------------- |
 | XGrad-CAM on ResNet50  | 0.00043 | 0.0000028 | 0 | 0 |
 | XGrad-CAM on VGG16  | 0.018 | 0.0026 | 0.00025 | 0 |
