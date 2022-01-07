@@ -51,7 +51,7 @@ This project uses the Spore Dataset under the scope of the project requirement. 
 #### Fine-tuning only dense layers
 ![XGrad-CAM:DenseNet169](./images/xdense.png)
 #### Fine-tuning the last two convolutional layers and dense layers
-![XGrad-CAM:DenseNet169-conv](./images/xdense_conv..png)
+![XGrad-CAM:DenseNet169-conv](./images/xdense_conv.png)
 ### XGrad-CAM for MobileNetv2
 #### Fine-tuning only dense layers
 ![XGrad-CAM:MobileNetv2](./images/xmobile.png)
