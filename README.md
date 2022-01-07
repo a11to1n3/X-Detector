@@ -38,21 +38,45 @@ This project uses the Spore Dataset under the scope of the project requirement. 
 # Results
 ## Visualization of the resulting detection
 ### XGrad-CAM for ResNet50
+#### Fine-tuning only dense layers
 ![XGrad-CAM:ResNet50](./images/xresnet.png)
+#### Fine-tuning the last two convolutional layers and dense layers
+![XGrad-CAM:ResNet50-Conv](./images/xresnet_conv.png)
 ### XGrad-CAM for VGG16
+#### Fine-tuning only dense layers
 ![XGrad-CAM:VGG16](./images/xvgg.png)
+#### Fine-tuning the last two convolutional layers and dense layers
+![XGrad-CAM:VGG16-conv](./images/xvgg_conv.png)
 ### XGrad-CAM for DenseNet169
+#### Fine-tuning only dense layers
 ![XGrad-CAM:DenseNet169](./images/xdense.png)
+#### Fine-tuning the last two convolutional layers and dense layers
+![XGrad-CAM:DenseNet169-conv](./images/xdense_conv..png)
 ### XGrad-CAM for MobileNetv2
+#### Fine-tuning only dense layers
 ![XGrad-CAM:MobileNetv2](./images/xmobile.png)
+#### Fine-tuning the last two convolutional layers and dense layers
+![XGrad-CAM:MobileNetv2-conv](./images/xmobile_conv.png)
 ### Grad-CAM++ for ResNet50
+#### Fine-tuning only dense layers
 ![Grad-CAM++:ResNet50](./images/plusresnet.png)
+#### Fine-tuning the last two convolutional layers and dense layers
+![Grad-CAM++:ResNet50-conv](./images/plusresnet_conv.png)
 ### Grad-CAM++ for VGG16
+#### Fine-tuning only dense layers
 ![XGrad-CAM++:VGG16](./images/plusvgg.png)
+#### Fine-tuning the last two convolutional layers and dense layers
+![XGrad-CAM++:VGG16-conv](./images/plusvgg_conv.png)
 ### Grad-CAM++ for DenseNet169
+#### Fine-tuning only dense layers
 ![Grad-CAM++:DenseNet169](./images/plusdense.png)
+#### Fine-tuning the last two convolutional layers and dense layers
+![Grad-CAM++:DenseNet169-conv](./images/plusdense_conv.png)
 ### Grad-CAM++ for MobileNetv2
+#### Fine-tuning only dense layers
 ![Grad-CAM++:MobileNetv2](./images/plusmobile.png)
+#### Fine-tuning the last two convolutional layers and dense layers
+![Grad-CAM++:MobileNetv2-conv](./images/plusmobile_conv.png)
 
 ## Test processing time for one image
 
@@ -68,14 +92,25 @@ This project uses the Spore Dataset under the scope of the project requirement. 
 | Grad-CAM++ on MobileNetv2  | 6.91  |
 
 ## Test performance over all classes
-
-| Methods  | mAP@0.05 | mAP@0.15 | mAP@0.25
-| ------------- | ------------- | ------------- | ------------- |
-| XGrad-CAM on ResNet50  | 0.00025 | 0 | 0 |
-| XGrad-CAM on VGG16  | 0.01 | 0.002 | 0.00053 |
-| XGrad-CAM on DenseNet169  | 0.00018 | 0.000013 | 0.000013 |
-| XGrad-CAM on MobileNetv2  | 0.00092 | 0 | 0 |
-| Grad-CAM++ on ResNet50  | 0.00029  | 0.00002 | 0 |
-| Grad-CAM++ on VGG16  | 0.0043 | 0.00033 | 0.000009 |
-| Grad-CAM++ on DenseNet169  | 0.0002 | 0.00002 | 0|
-| Grad-CAM++ on MobileNetv2  | 0.0002 | 0.000004| 0 |
+### Fine-tuning only dense layers
+| Methods  | mAP@0.05 | mAP@0.15 | mAP@0.25 | mAP@0.5
+| ------------- | ------------- | ------------- | ------------- | ------------- |
+| XGrad-CAM on ResNet50  | 0.00025 | 0 | 0 | 0 |
+| XGrad-CAM on VGG16  | 0.01 | 0.002 | 0.00053 | 0 |
+| XGrad-CAM on DenseNet169  | 0.00018 | 0.000013 | 0.000013 | 0 |
+| XGrad-CAM on MobileNetv2  | 0.00092 | 0 | 0 | 0 |
+| Grad-CAM++ on ResNet50  | 0.00029  | 0.00002 | 0 | 0 |
+| Grad-CAM++ on VGG16  | 0.0043 | 0.00033 | 0.000009 | 0 |
+| Grad-CAM++ on DenseNet169  | 0.0002 | 0.00002 | 0| 0 |
+| Grad-CAM++ on MobileNetv2  | 0.0002 | 0.000004| 0 | 0 |
+### Fine-tuning the last two convolutional layers and dense layers
+| Methods  | mAP@0.05 | mAP@0.15 | mAP@0.25 | | mAP@0.5
+| ------------- | ------------- | ------------- | ------------- | ------------- |
+| XGrad-CAM on ResNet50  | 0.00043 | 0.0000028 | 0 | 0 |
+| XGrad-CAM on VGG16  | 0.018 | 0.0026 | 0.00025 | 0 |
+| XGrad-CAM on DenseNet169  | 0.0063 | 0.0000065 | 0.0000065 | 0 |
+| XGrad-CAM on MobileNetv2  | 0.001 | 0.000028 | 0 | 0|
+| Grad-CAM++ on ResNet50  | 0.0009  | 0 | 0 | 0 |
+| Grad-CAM++ on VGG16  | 0.0083 | 0.00058 | 0.000035 | 0.0000025|
+| Grad-CAM++ on DenseNet169  | 0.0003 | 0.00002 | 0.000007 | 0 |
+| Grad-CAM++ on MobileNetv2  | 0.0003 | 0.000005| 0.000005 | 0 |
